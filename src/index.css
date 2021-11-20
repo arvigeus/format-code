@@ -111,11 +111,13 @@ main.dark .editorLineNumber {
   list-style-type: none;
 }
 
-main.light #home ul {
+main.light #home ul,
+main.light #home a {
   color: #05a;
 }
 
-main.dark #home ul {
+main.dark #home ul,
+main.dark #home a {
   color: #4d8ccb;
 }
 
@@ -123,4 +125,13 @@ main.dark #home ul {
   content: "–"; /* en dash */
   position: absolute;
   margin-left: -1.1em; 
+}
+
+#home hr {
+  border: 1px solid #3E7AA6;
+  width: 100%;
+}
+
+#home a {
+  text-align: right;
 }
