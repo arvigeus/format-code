@@ -83,13 +83,6 @@ export default function Home() {
           <Link to="/yaml">YAML</Link>
         </li>
       </ul>
-      <hr />
-      <a
-        href="https://github.com/arvigeus/format-code"
-        rel="noopener noreferrer"
-      >
-        Github
-      </a>
     </div>
   );
 }

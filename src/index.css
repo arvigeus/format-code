@@ -85,13 +85,20 @@ main.dark .editorLineNumber {
 }
 
 #panel button, #panel a {
-  background-color: #0066B8;
-  color: #fff;
+  background-color: transparent;
   font-weight: bold;
   margin-bottom: 5px;
   border: none;
   padding: 10px;
   cursor: pointer;
+}
+
+main.light #panel button, main.light #panel a {
+  color: #0066B8;
+}
+
+main.dark #panel button, main.dark #panel a {
+  color: #fff;
 }
 
 #home {
@@ -101,7 +108,6 @@ main.dark .editorLineNumber {
 }
 
 #home h4 {
-  color: #3E7AA6;
   margin: 0;
   font-size: 18px;
 }
@@ -111,27 +117,20 @@ main.dark .editorLineNumber {
   list-style-type: none;
 }
 
+main.light #home h4,
 main.light #home ul,
 main.light #home a {
-  color: #05a;
+  color: #0066B8;
 }
 
+main.dark #home h4,
 main.dark #home ul,
 main.dark #home a {
-  color: #4d8ccb;
+  color: #fff;
 }
 
 #home ul > li:before {
   content: "–"; /* en dash */
   position: absolute;
   margin-left: -1.1em; 
-}
-
-#home hr {
-  border: 1px solid #3E7AA6;
-  width: 100%;
-}
-
-#home a {
-  text-align: right;
 }

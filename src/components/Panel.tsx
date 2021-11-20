@@ -4,6 +4,7 @@ import { ReactComponent as Format } from "../icons/format.svg";
 import { ReactComponent as Copy } from "../icons/copy.svg";
 import { ReactComponent as Theme } from "../icons/theme.svg";
 import { ReactComponent as Home } from "../icons/home.svg";
+import { ReactComponent as Github } from "../icons/github.svg";
 
 import { ThemeContext } from "../hooks/useDarkMode";
 
@@ -29,6 +30,13 @@ export default function Panel({ name, settings, handleFormat }: PanelProps) {
       <Link to="/" title="Go back">
         <Home />
       </Link>
+      <a
+        className="github"
+        href="https://github.com/arvigeus/format-code"
+        rel="noopener noreferrer"
+      >
+        <Github />
+      </a>
     </aside>
   );
 }
