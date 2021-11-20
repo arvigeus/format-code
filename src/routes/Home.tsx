@@ -37,10 +37,22 @@ export default function Home() {
           <Link to="/less">LESS</Link>
         </li>
         <li>
-          <Link to="/mdx">MDX</Link>
+          <Link to="/mariadb">MariaDB</Link>
         </li>
         <li>
           <Link to="/md">Markdown</Link>
+        </li>
+        <li>
+          <Link to="/mdx">MDX</Link>
+        </li>
+        <li>
+          <Link to="/mysql">MySQL</Link>
+        </li>
+        <li>
+          <Link to="/plsql">PL/SQL</Link>
+        </li>
+        <li>
+          <Link to="/postgresql">PostgreSQL</Link>
         </li>
         <li>
           <Link to="/scss">SCSS</Link>
@@ -50,6 +62,9 @@ export default function Home() {
         </li>
         <li>
           <Link to="/tsx">TSX</Link>
+        </li>
+        <li>
+          <Link to="/tsql">TSQL</Link>
         </li>
         <li>
           <Link to="/ts">TypeScript</Link>

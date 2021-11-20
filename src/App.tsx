@@ -6,6 +6,11 @@ import useDarkTheme, { ThemeContext } from "./hooks/useDarkMode";
 
 const Home = lazy(() => import("./routes/Home"));
 const Sql = lazy(() => import("./routes/Sql"));
+const Mariadb = lazy(() => import("./routes/Mariadb"));
+const Mysql = lazy(() => import("./routes/Mysql"));
+const Plsql = lazy(() => import("./routes/Plsql"));
+const Postgresql = lazy(() => import("./routes/Postgresql"));
+const TSql = lazy(() => import("./routes/Tsql"));
 const JavaScript = lazy(() => import("./routes/JavaScript"));
 const Css = lazy(() => import("./routes/Css"));
 const Json = lazy(() => import("./routes/Json"));
@@ -39,6 +44,11 @@ export default function App() {
           <Routes>
             <Route path="*" element={<Home />} />
             <Route path="/sql" element={<Sql />}></Route>
+            <Route path="/mariadb" element={<Mariadb />}></Route>
+            <Route path="/mysql" element={<Mysql />}></Route>
+            <Route path="/plsql" element={<Plsql />}></Route>
+            <Route path="/postgresql" element={<Postgresql />}></Route>
+            <Route path="/tsql" element={<TSql />}></Route>
             <Route path="/js" element={<JavaScript />}></Route>
             <Route path="/javascript" element={<JavaScript />}></Route>
             <Route path="/css" element={<Css />}></Route>

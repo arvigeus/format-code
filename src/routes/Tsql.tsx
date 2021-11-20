@@ -6,12 +6,13 @@ import CodeEditor from "../components/CodeEditor";
 
 const Sql = () => (
   <CodeEditor
-    name="SQL"
+    name="TSQL"
     prismLangName="sql"
     lang={languages.sql}
     options={{
       parser: "sql",
       plugins: [parserSql],
+      language: "tsql",
       uppercase: true,
     }}
   />
