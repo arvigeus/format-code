@@ -32,9 +32,6 @@ export default function Home() {
           <Link to="/json5">JSON5</Link>
         </li>
         <li>
-          <Link to="/jsx">JSX</Link>
-        </li>
-        <li>
           <Link to="/js">JavaScript</Link>
         </li>
         <li>
@@ -59,13 +56,16 @@ export default function Home() {
           <Link to="/postgresql">PostgreSQL</Link>
         </li>
         <li>
+          <Link to="/jsx">React (jsx)</Link>
+        </li>
+        <li>
+          <Link to="/tsx">React TypeScript (tsx)</Link>
+        </li>
+        <li>
           <Link to="/scss">SCSS</Link>
         </li>
         <li>
           <Link to="/sql">SQL</Link>
-        </li>
-        <li>
-          <Link to="/tsx">TSX</Link>
         </li>
         <li>
           <Link to="/tsql">TSQL</Link>
