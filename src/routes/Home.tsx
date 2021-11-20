@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
+import SimplePanel from "../components/SimplePanel";
+
 export default function Home() {
   return (
     <div
@@ -14,6 +16,7 @@ export default function Home() {
       <Helmet>
         <title>Code formatter</title>
       </Helmet>
+      <SimplePanel />
       <h4># Available formatters:</h4>
       <ul>
         <li>
