@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -10,6 +11,9 @@ export default function Home() {
         padding: "15px",
       }}
     >
+      <Helmet>
+        <title>Code formatter</title>
+      </Helmet>
       <h4># Available formatters:</h4>
       <ul>
         <li>

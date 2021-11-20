@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# format-code
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A code formatter using prettier.
 
 ## Available Scripts
 
