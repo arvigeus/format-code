@@ -93,6 +93,10 @@ main.dark .editorLineNumber {
   cursor: pointer;
 }
 
+main {
+  cursor: text;
+}
+
 main.light #panel button, main.light #panel a {
   color: #0066B8;
 }

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, MouseEventHandler } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -39,7 +39,7 @@ export default function App() {
           href={`${process.env.PUBLIC_URL}/style/prism-material-${theme}.min.css`}
         />
       </Helmet>
-      <main className={theme}>
+      <main className={theme} onClick={mainHandler}>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="*" element={<Home />} />
@@ -76,11 +76,16 @@ export default function App() {
   );
 }
 
-document.addEventListener("click", (evt: MouseEvent) => {
-  const codeArea = document.getElementById("codeArea");
-  if (codeArea === evt.target) return;
-  codeArea?.focus();
-});
+const mainHandler: MouseEventHandler<HTMLElement> = (evt) => {
+  const element = evt.target as HTMLElement;
+  if (element.tagName === "MAIN") {
+    var codeArea = document.getElementById("codeArea");
+    if (!codeArea) return;
+    codeArea.focus();
+    const textarea = codeArea as HTMLTextAreaElement;
+    textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+  }
+};
 
 const Loader = () => (
   <div id="loading">
