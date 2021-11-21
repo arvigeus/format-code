@@ -85,6 +85,7 @@ document.addEventListener("click", (evt: MouseEvent) => {
 const Loader = () => (
   <div id="loading">
     <p>Segmentation fault</p>
+    <p>PC LOAD LETTER</p>
     <p>Core dumped</p>
     <p>Press any key to contunue...</p>
   </div>
