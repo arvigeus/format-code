@@ -18,7 +18,16 @@ const messages = [
   "418 I'm a teapot",
   "Authentication exception",
   "File Is Too Large for Destination File System",
-  "User is not in the sudoers file. This incident will be reported"
+  "User is not in the sudoers file. This incident will be reported",
+  "Invalid Node version",
+  "Uncaught ReferenceError: React is not defined",
+  "Have you tried turning it off and on again?",
+  "Task is taking too long to complete",
+  "Power down",
+  "Not responding",
+  "Unable to connect to server",
+  "Please deposit $3.49 to continue",
+  "Please hold. Our assistant will be with you shortly"
 ];
 
 export function getMessage() {
