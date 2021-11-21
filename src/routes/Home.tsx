@@ -59,10 +59,10 @@ export default function Home() {
           <Link to="/postgresql">PostgreSQL</Link>
         </li>
         <li>
-          <Link to="/jsx">React (jsx)</Link>
+          <Link to="/jsx">React</Link>
         </li>
         <li>
-          <Link to="/tsx">React TypeScript (tsx)</Link>
+          <Link to="/tsx">React TypeScript</Link>
         </li>
         <li>
           <Link to="/scss">SCSS</Link>

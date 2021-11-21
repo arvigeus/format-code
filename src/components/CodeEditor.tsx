@@ -1,3 +1,4 @@
+import { KeyboardEventHandler } from "react";
 import { Helmet } from "react-helmet-async";
 import Editor from "react-simple-code-editor";
 import { highlight } from "prismjs/components/prism-core";
@@ -14,6 +15,10 @@ type CodeEditorType = {
 
 const CodeEditor = ({ name, options, prismLangName, lang }: CodeEditorType) => {
   const { code, handleFormat, onEditorChange } = useFormatter(name, options);
+  const handleEnter: KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (event.key === "Enter" && event.ctrlKey) handleFormat();
+    return true;
+  };
   return (
     <>
       <Helmet>
@@ -24,6 +29,7 @@ const CodeEditor = ({ name, options, prismLangName, lang }: CodeEditorType) => {
         value={code}
         autoFocus
         onValueChange={onEditorChange}
+        onKeyPress={handleEnter}
         highlight={(code) => hightlightWithLineNumbers(code, lang)}
         padding={10}
         className="editor"

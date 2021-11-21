@@ -119,18 +119,29 @@ main.dark #panel button, main.dark #panel a {
 
 main.light #home h4,
 main.light #home ul,
-main.light #home a {
+main.light #home a,
+main.light #loading {
   color: #0066B8;
 }
 
 main.dark #home h4,
 main.dark #home ul,
-main.dark #home a {
+main.dark #home a,
+main.dark #loading {
   color: #fff;
 }
 
 #home ul > li:before {
-  content: "–"; /* en dash */
+  content: ">"; /* en dash */
   position: absolute;
   margin-left: -1.1em; 
+}
+
+#home ul li {
+  font-family: Fira Mono;
+}
+
+#loading {
+  padding: 20px;
+  font-family: Fira Mono;
 }

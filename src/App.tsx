@@ -40,7 +40,7 @@ export default function App() {
         />
       </Helmet>
       <main className={theme}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="*" element={<Home />} />
             <Route path="/sql" element={<Sql />}></Route>
@@ -75,3 +75,17 @@ export default function App() {
     </ThemeContext.Provider>
   );
 }
+
+document.addEventListener("click", (evt: MouseEvent) => {
+  const codeArea = document.getElementById("codeArea");
+  if (codeArea === evt.target) return;
+  codeArea?.focus();
+});
+
+const Loader = () => (
+  <div id="loading">
+    <p>Segmentation fault</p>
+    <p>Core dumped</p>
+    <p>Press any key to contunue...</p>
+  </div>
+);
