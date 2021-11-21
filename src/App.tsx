@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import useDarkTheme, { ThemeContext } from "./hooks/useDarkMode";
+import { getMessage } from "./utils/messages";
 
 const Home = lazy(() => import("./routes/Home"));
 const Sql = lazy(() => import("./routes/Sql"));
@@ -89,9 +90,7 @@ const mainHandler: MouseEventHandler<HTMLElement> = (evt) => {
 
 const Loader = () => (
   <div id="loading">
-    <p>Segmentation fault</p>
-    <p>PC LOAD LETTER</p>
-    <p>Core dumped</p>
+    <p>{getMessage()}</p>
     <p>Press any key to contunue...</p>
   </div>
 );
