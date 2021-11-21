@@ -11,10 +11,14 @@ const messages = [
   "Does Not Compute",
   "This program has performed an illegal operation and will be shut down",
   "sudo rm -rf /",
-  "Internal server error",
+  "500 Internal server error",
   "Something happened",
-  "Page not found",
-  "Format complete"
+  "404 Page not found",
+  "Format complete",
+  "418 I'm a teapot",
+  "Authentication exception",
+  "File Is Too Large for Destination File System",
+  "User is not in the sudoers file. This incident will be reported"
 ];
 
 export function getMessage() {

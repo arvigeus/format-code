@@ -90,7 +90,7 @@ const mainHandler: MouseEventHandler<HTMLElement> = (evt) => {
 
 const Loader = () => (
   <div id="loading">
-    <p>{getMessage()}</p>
+    <p style={{ color: "crimson" }}>{getMessage()}</p>
     <p>Press any key to contunue...</p>
   </div>
 );
