@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
 }
 
 html, body, main, #root {
@@ -32,6 +33,7 @@ a {
   font-size: 16;
   width: 100%;
   height: 100%;
+  max-width: calc(100% - 80px);
 }
 
 
