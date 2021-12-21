@@ -1,33 +1,36 @@
 import type { MetaFunction, LoaderFunction, LinksFunction } from "remix";
-import { useLoaderData, json, Link } from "remix";
+import { useLoaderData, json, useFetcher, Link } from "remix";
+import { createLanguageManifest } from "~/lib/meta";
+
+import { SimplePanel } from "~/components/Panel";
 
 import stylesUrl from "~/styles/home.css";
 
 type HomeData = Array<{ path: string; name: string }>;
 
-export let loader: LoaderFunction = () => {
+export let loader: LoaderFunction = ({ request }) => {
   let data: HomeData = [
-    { path: "/css", name: "CSS" },
-    { path: "/gql", name: "GraphQL" },
-    { path: "/html", name: "HTML" },
-    { path: "/json", name: "JSON" },
-    { path: "/json5", name: "JSON5" },
-    { path: "/js", name: "JavaScript" },
-    { path: "/less", name: "LESS" },
-    { path: "/mariadb", name: "MariaDB" },
-    { path: "/md", name: "Markdown" },
-    { path: "/mdx", name: "MDX" },
-    { path: "/mysql", name: "MySQL" },
-    { path: "/plsql", name: "PL/SQL" },
-    { path: "/postgresql", name: "PostgreSQL" },
-    { path: "/jsx", name: "React" },
-    { path: "/tsx", name: "React TypeScript" },
-    { path: "/scss", name: "SCSS" },
-    { path: "/sql", name: "SQL" },
-    { path: "/tsql", name: "TSQL" },
-    { path: "/ts", name: "TypeScript" },
-    { path: "/xml", name: "XML" },
-    { path: "/yaml", name: "YAML" },
+    { path: "/lang/css", name: "CSS" },
+    { path: "/lang/gql", name: "GraphQL" },
+    { path: "/lang/html", name: "HTML" },
+    { path: "/lang/json", name: "JSON" },
+    { path: "/lang/json5", name: "JSON5" },
+    { path: "/lang/js", name: "JavaScript" },
+    { path: "/lang/less", name: "LESS" },
+    { path: "/lang/mariadb", name: "MariaDB" },
+    { path: "/lang/md", name: "Markdown" },
+    { path: "/lang/mdx", name: "MDX" },
+    { path: "/lang/mysql", name: "MySQL" },
+    { path: "/lang/plsql", name: "PL/SQL" },
+    { path: "/lang/postgresql", name: "PostgreSQL" },
+    { path: "/lang/jsx", name: "React" },
+    { path: "/lang/tsx", name: "React TypeScript" },
+    { path: "/lang/scss", name: "SCSS" },
+    { path: "/lang/sql", name: "SQL" },
+    { path: "/lang/tsql", name: "TSQL" },
+    { path: "/lang/ts", name: "TypeScript" },
+    { path: "/lang/xml", name: "XML" },
+    { path: "/lang/yaml", name: "YAML" },
   ];
 
   // https://remix.run/api/remix#json
@@ -43,22 +46,33 @@ export let meta: MetaFunction = () => {
 };
 
 export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: stylesUrl }];
+  return [
+    { rel: "stylesheet", href: stylesUrl },
+    ...createLanguageManifest("code"),
+  ];
 };
 
 export default function Home() {
   let data = useLoaderData<HomeData>();
+  const toggleTheme = useFetcher<Record<string, string>>();
+
+  const reloadDocument = !!toggleTheme.data;
 
   return (
-    <div id="home">
+    <div id="home" style={toggleTheme.data}>
       <h4># Available formatters:</h4>
       <ul>
         {data.map(({ path, name }) => (
           <li key={name}>
-            <Link to={path}>{name}</Link>
+            <Link to={path} reloadDocument={reloadDocument}>
+              {name}
+            </Link>
           </li>
         ))}
       </ul>
+      <toggleTheme.Form method="post" action="/toggleTheme">
+        <SimplePanel busy={toggleTheme.state === "submitting"} />
+      </toggleTheme.Form>
     </div>
   );
 }

@@ -1,14 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Mono&display=swap");
 
-:root {
-  --color-foreground: #0066b8;
-  --color-background: #e3eaf1;
-  --color-editor-caret: #111;
-  --color-editor-line-number: #999;
-  --font-body: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
 html {
   box-sizing: border-box;
 }
@@ -37,7 +28,9 @@ body {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
 }
 
 a {

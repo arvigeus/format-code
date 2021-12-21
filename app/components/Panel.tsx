@@ -8,40 +8,60 @@ import {
 import { VscGithub } from "react-icons/vsc";
 
 type PanelProps = {
-  name: string;
-  settings: Record<string, any> | any;
-  handleFormat: () => void;
+  onFormat: () => void;
+  onCopyToClipboard: () => void;
+  reloadDocument: boolean;
+  busy: boolean;
 };
 
-export default function Panel({ name, settings, handleFormat }: PanelProps) {
+export default function Panel({
+  onFormat,
+  onCopyToClipboard,
+  reloadDocument,
+  busy,
+}: PanelProps) {
   return (
     <aside id="panel">
-      <button title="Format" onClick={handleFormat}>
-        <FaMagic />
+      <button title="Format" onClick={onFormat}>
+        <FaMagic size={24} />
       </button>
-      <button title="Copy to clipboard" onClick={copyToClipboard}>
-        <MdOutlineContentCopy />
+      <button title="Copy to clipboard" onClick={onCopyToClipboard}>
+        <MdOutlineContentCopy size={24} />
       </button>
-      <button title="Toggle theme">
-        <MdOutlineBrightnessMedium />
+      <button title="Toggle theme" type="submit" disabled={busy}>
+        <MdOutlineBrightnessMedium size={24} />
       </button>
-      <Link to="/" title="Go back">
-        <MdOutlineHome />
+      <Link to="/" title="Go back" reloadDocument={reloadDocument}>
+        <MdOutlineHome size={24} />
       </Link>
       <a
         className="github"
         href="https://github.com/arvigeus/format-code"
         rel="noopener noreferrer"
       >
-        <VscGithub />
+        <VscGithub size={24} />
       </a>
     </aside>
   );
 }
 
-function copyToClipboard() {
-  const cb = navigator.clipboard;
-  const code = document.querySelector("#codeArea");
-  // @ts-ignore
-  cb.writeText(code.value);
+type SimplePanelProps = {
+  busy: boolean;
+};
+
+export function SimplePanel({ busy }: SimplePanelProps) {
+  return (
+    <aside id="panel">
+      <button title="Toggle theme" type="submit" disabled={busy}>
+        <MdOutlineBrightnessMedium size={24} />
+      </button>
+      <a
+        className="github"
+        href="https://github.com/arvigeus/format-code"
+        rel="noopener noreferrer"
+      >
+        <VscGithub size={24} />
+      </a>
+    </aside>
+  );
 }

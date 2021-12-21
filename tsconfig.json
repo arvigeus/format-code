@@ -1,5 +1,11 @@
 {
-  "include": ["remix.env.d.ts", "globals.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "remix.env.d.ts",
+    "globals.d.ts",
+    "environment.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "esModuleInterop": true,

@@ -3,5 +3,37 @@
     "env": {
       "ENABLE_FILE_SYSTEM_API": "1"
     }
-  }
+  },
+  "redirects": [
+    { "source": "/sql", "destination": "/lang/sql", "statusCode": 301 },
+    { "source": "/mariadb", "destination": "/lang/mariadb", "statusCode": 301 },
+    { "source": "/mysql", "destination": "/lang/mysql", "statusCode": 301 },
+    { "source": "/plsql", "destination": "/lang/plsql", "statusCode": 301 },
+    {
+      "source": "/postgresql",
+      "destination": "/lang/postgresql",
+      "statusCode": 301
+    },
+    { "source": "/tsql", "destination": "/lang/tsql", "statusCode": 301 },
+    { "source": "/js", "destination": "/lang/js", "statusCode": 301 },
+    { "source": "/javascript", "destination": "/lang/js", "statusCode": 301 },
+    { "source": "/css", "destination": "/lang/css", "statusCode": 301 },
+    { "source": "/json", "destination": "/lang/json", "statusCode": 301 },
+    { "source": "/json5", "destination": "/lang/json5", "statusCode": 301 },
+    { "source": "/gql", "destination": "/lang/gql", "statusCode": 301 },
+    { "source": "/graphql", "destination": "/lang/gql", "statusCode": 301 },
+    { "source": "/html", "destination": "/lang/html", "statusCode": 301 },
+    { "source": "/md", "destination": "/lang/md", "statusCode": 301 },
+    { "source": "/markdown", "destination": "/lang/md", "statusCode": 301 },
+    { "source": "/mdx", "destination": "/lang/mdx", "statusCode": 301 },
+    { "source": "/ts", "destination": "/lang/ts", "statusCode": 301 },
+    { "source": "/typescript", "destination": "/lang/ts", "statusCode": 301 },
+    { "source": "/yaml", "destination": "/lang/yaml", "statusCode": 301 },
+    { "source": "/jsx", "destination": "/lang/jsx", "statusCode": 301 },
+    { "source": "/tsx", "destination": "/lang/tsx", "statusCode": 301 },
+    { "source": "/react", "destination": "/lang/tsx", "statusCode": 301 },
+    { "source": "/less", "destination": "/lang/less", "statusCode": 301 },
+    { "source": "/scss", "destination": "/lang/scss", "statusCode": 301 },
+    { "source": "/xml", "destination": "/lang/xml", "statusCode": 301 }
+  ]
 }

@@ -11,17 +11,17 @@ import {
 import type { LinksFunction } from "remix";
 
 import globalStylesUrl from "~/styles/global.css";
-import darkStylesUrl from "~/styles/dark.css";
+import panelStylesUrl from "~/styles/panel.css";
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: globalStylesUrl },
     {
       rel: "stylesheet",
-      href: darkStylesUrl,
-      media: "(prefers-color-scheme: dark)",
+      href: "/styles/theme.css",
     },
+    { rel: "stylesheet", href: globalStylesUrl },
+    { rel: "stylesheet", href: panelStylesUrl },
   ];
 };
 
@@ -100,11 +100,11 @@ function Document({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link
+        {/* <link
           rel="stylesheet"
           type="text/css"
           href={`/style/prism-material-light.min.css`}
-        />
+        /> */}
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
