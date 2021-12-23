@@ -22,10 +22,14 @@ export default function Panel({
 }: PanelProps) {
   return (
     <aside id="panel">
-      <button title="Format" onClick={onFormat}>
+      <button type="button" title="Format" onClick={onFormat}>
         <FaMagic size={24} />
       </button>
-      <button title="Copy to clipboard" onClick={onCopyToClipboard}>
+      <button
+        type="button"
+        title="Copy to clipboard"
+        onClick={onCopyToClipboard}
+      >
         <MdOutlineContentCopy size={24} />
       </button>
       <button title="Toggle theme" type="submit" disabled={busy}>
