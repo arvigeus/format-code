@@ -21,6 +21,7 @@ export default function CodeEditor({
       theme={theme}
       extensions={[language]}
       onChange={onChange}
+      autoFocus
     />
   );
 }
