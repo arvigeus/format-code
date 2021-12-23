@@ -1,8 +1,8 @@
 {
   "private": true,
   "name": "remix-app-template",
-  "description": "",
-  "license": "",
+  "description": "Easy and opinionated online code formatter",
+  "license": "MIT",
   "scripts": {
     "build": "remix build",
     "dev": "node -r dotenv/config node_modules/.bin/remix dev",

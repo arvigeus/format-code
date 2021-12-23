@@ -41,7 +41,7 @@ export let loader: LoaderFunction = ({ request }) => {
 export let meta: MetaFunction = () => {
   return {
     title: "Code formatter",
-    description: "Easy an opinionated online code formatter",
+    description: "Easy and opinionated online code formatter",
   };
 };
 
