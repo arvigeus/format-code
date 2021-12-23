@@ -1,0 +1,30 @@
+#home {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  color: var(--color-foreground);
+}
+
+#home h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+#home a {
+  color: var(--color-foreground);
+}
+
+#home ul {
+  font-size: 16px;
+  list-style-type: none;
+}
+
+#home ul > li:before {
+  content: ">";
+  position: absolute;
+  margin-left: -1.1em;
+}
+
+#home ul li {
+  font-family: Fira Mono;
+}
