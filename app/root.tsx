@@ -1,13 +1,4 @@
-import { MouseEventHandler } from "react";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useCatch,
-} from "remix";
+import { Links, LiveReload, Meta, Outlet, Scripts, useCatch } from "remix";
 import type { LinksFunction } from "remix";
 
 import globalStylesUrl from "~/styles/global.css";
@@ -100,18 +91,12 @@ function Document({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        {/* <link
-          rel="stylesheet"
-          type="text/css"
-          href={`/style/prism-material-light.min.css`}
-        /> */}
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
       </head>
       <body>
         {children}
-        <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
@@ -120,16 +105,5 @@ function Document({
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
-  return <main onClick={mainHandler}>{children}</main>;
+  return <main>{children}</main>;
 }
-
-const mainHandler: MouseEventHandler<HTMLElement> = (evt) => {
-  const element = evt.target as HTMLElement;
-  if (element.tagName === "MAIN") {
-    var codeArea = document.getElementById("codeArea");
-    if (!codeArea) return;
-    codeArea.focus();
-    const textarea = codeArea as HTMLTextAreaElement;
-    textarea.setSelectionRange(textarea.value.length, textarea.value.length);
-  }
-};
