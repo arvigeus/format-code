@@ -20,6 +20,7 @@ export default function Code() {
   const isReady = useSqlFormatter({
     language: "mariadb",
     uppercase: true,
+    linesBetweenQueries: 2,
   });
 
   if (!isReady) return null;

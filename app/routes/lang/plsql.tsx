@@ -20,6 +20,7 @@ export default function Code() {
   const isReady = useSqlFormatter({
     language: "plsql",
     uppercase: true,
+    linesBetweenQueries: 2,
   });
 
   if (!isReady) return null;
