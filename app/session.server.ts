@@ -7,6 +7,7 @@ let { commitSession, destroySession, getSession } = createCookieSessionStorage({
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     secrets: [process.env.COOKIE_SECRET],
+    maxAge: Number.MAX_SAFE_INTEGER,
   },
 });
 
