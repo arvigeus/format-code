@@ -4,7 +4,7 @@
   "description": "Easy and opinionated online code formatter",
   "license": "MIT",
   "scripts": {
-    "build:css": "postcss styles --base styles --dir app/styles --env production",
+    "build:css": "postcss app/styles --base app/styles --dir app/build/styles --env production",
     "build:remix": "remix build",
     "build": "concurrently \"npm:build:*\"",
     "dev:css": "postcss app/styles --base app/styles --dir app/build/styles -w",
