@@ -4,9 +4,8 @@
   "description": "Easy and opinionated online code formatter",
   "license": "MIT",
   "scripts": {
-    "build:css": "postcss app/styles --base app/styles --dir app/build/styles --env production",
-    "build:remix": "remix build",
-    "build": "concurrently \"npm:build:*\"",
+    "prebuild": "postcss app/styles --base app/styles --dir app/build/styles --env production",
+    "build": "remix build",
     "dev:css": "postcss app/styles --base app/styles --dir app/build/styles -w",
     "dev:remix": "node -r dotenv/config node_modules/.bin/remix dev",
     "dev": "concurrently \"npm:dev:*\"",
