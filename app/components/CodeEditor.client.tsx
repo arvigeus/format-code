@@ -1,6 +1,7 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { LanguageSupport } from "@codemirror/language";
 import { StreamLanguage } from "@codemirror/stream-parser";
+import { EditorView } from "@codemirror/view";
 
 import theme from "~/lib/editorTheme";
 
@@ -19,7 +20,7 @@ export default function CodeEditor({
     <CodeMirror
       value={value}
       theme={theme}
-      extensions={[language]}
+      extensions={[language, EditorView.lineWrapping]}
       onChange={onChange}
       height="100vh"
       autoFocus
