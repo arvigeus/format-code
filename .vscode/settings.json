@@ -1,4 +1,21 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "files.exclude": {
+    "api": true,
+    "app/build": true,
+    "husky/_": true,
+    "public/build": true,
+    "**/.cache": true,
+    "**/.eslintcache": true,
+    "**/.stylelintcache": true,
+    "**/tsconfig.tsbuildinfo": true,
+    "**/node_modules": true,
+    "**/package-lock.json": true
+  },
+  "eslint.lintTask.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

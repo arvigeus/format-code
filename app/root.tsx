@@ -1,8 +1,8 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, useCatch } from "remix";
 import type { LinksFunction } from "remix";
 
-import globalStylesUrl from "~/styles/global.css";
-import panelStylesUrl from "~/styles/panel.css";
+import globalStylesUrl from "~/build/styles/global.css";
+import panelStylesUrl from "~/build/styles/panel.css";
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {

@@ -4,7 +4,7 @@ import { createLanguageManifest } from "~/lib/meta";
 
 import { SimplePanel } from "~/components/Panel";
 
-import stylesUrl from "~/styles/home.css";
+import stylesUrl from "~/build/styles/home.css";
 
 type HomeData = Array<{ path: string; name: string }>;
 
