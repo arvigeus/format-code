@@ -6,7 +6,7 @@ export const createLanguageManifest = (name: string) => [
   },
   {
     rel: "icon",
-    href: `/favicons/${name}/favicon-16x16.ico`,
+    href: `/favicons/${name}/favicon.ico`,
     sizes: "16x16",
   },
   {
