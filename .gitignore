@@ -1,12 +1,12 @@
 node_modules
 
 .cache
+.env
 .vercel
 .output
 
-.env
-
 /build/
-public/build
+/public/build
 app/build
 /api/index.js
+/api/index.js.map

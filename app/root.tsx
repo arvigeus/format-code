@@ -1,5 +1,5 @@
-import { Links, LiveReload, Meta, Outlet, Scripts, useCatch } from "remix";
-import type { LinksFunction } from "remix";
+import type { LinksFunction } from "@remix-run/node";
+import { Links, LiveReload, Meta, Outlet, Scripts, useCatch } from "@remix-run/react";
 
 import globalStylesUrl from "~/build/styles/global.css";
 import panelStylesUrl from "~/build/styles/panel.css";

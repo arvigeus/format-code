@@ -1,6 +1,6 @@
 import { renderToString } from "react-dom/server";
-import { RemixServer } from "remix";
-import type { EntryContext } from "remix";
+import type { EntryContext } from "@remix-run/node";
+import { RemixServer } from "@remix-run/react";
 
 if (!process.env.COOKIE_SECRET)
   throw new Error("Missing `COOKIE_SECRET` environment variable");

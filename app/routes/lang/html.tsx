@@ -1,7 +1,7 @@
 import parserHtml from "prettier/parser-html";
 import { html } from "@codemirror/lang-html";
 import { useMemo } from "react";
-import { MetaFunction, LinksFunction } from "remix";
+import { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
 import usePrettier from "~/hooks/usePrettier";
