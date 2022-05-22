@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
-import { format, FormatOptions } from "sql-formatter";
+import type { FormatOptions } from "prettier-sql";
+import { format } from "prettier-sql";
 import { useFormatterOptions } from "~/routes/lang";
 
 export default function useSqlFormatter(options: FormatOptions) {

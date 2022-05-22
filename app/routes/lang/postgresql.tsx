@@ -1,6 +1,6 @@
 import { sql, PostgreSQL } from "@codemirror/lang-sql";
 import { useMemo } from "react";
-import { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
 import useSqlFormatter from "~/hooks/useSqlFormatter";
@@ -20,7 +20,7 @@ export default function Code() {
   const isReady = useSqlFormatter({
     language: "postgresql",
     uppercase: true,
-    linesBetweenQueries: 2,
+    linesBetweenQueries: 1,
   });
 
   if (!isReady) return null;
