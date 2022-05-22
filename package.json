@@ -22,7 +22,6 @@
     "@codemirror/lang-sql": "^0.20.0",
     "@codemirror/lang-xml": "^0.20.0",
     "@codemirror/legacy-modes": "^0.20.0",
-    "@codemirror/state": "^0.20.0",
     "@codemirror/stream-parser": "^0.19.9",
     "@codemirror/view": "^0.20.6",
     "@ddietr/codemirror-themes": "^1.1.0",
@@ -79,5 +78,8 @@
       "prettier --write"
     ]
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "overrides": {
+    "@codemirror/state": "^0.20.0"
+  }
 }
