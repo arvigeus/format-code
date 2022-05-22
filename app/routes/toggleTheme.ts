@@ -1,6 +1,7 @@
 // https://www.ebey.me/blog/dynamic-css-with-remix-resource-routes
-import type { ActionFunction } from "remix";
-import { json } from "remix";
+import type { ActionFunction } from "@remix-run/node";
+
+import { json } from "@remix-run/node";
 
 import type { ThemeVariant } from "~/themes";
 import { editorColors, themeColors } from "~/themes";

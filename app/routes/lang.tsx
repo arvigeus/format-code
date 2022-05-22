@@ -1,8 +1,8 @@
 // https://reactrouter.com/docs/en/v6/api#outlet
 // https://github.com/uiwjs/react-codemirror/blob/master/website/App.tsx
 import { useState, useCallback, useRef } from "react";
-import type { LinksFunction } from "remix";
-import { Outlet, useOutletContext, useFetcher } from "remix";
+import type { LinksFunction } from "@remix-run/node";
+import { Outlet, useFetcher, useOutletContext } from "@remix-run/react";
 
 import Panel from "~/components/Panel";
 

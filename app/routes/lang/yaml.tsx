@@ -2,7 +2,7 @@ import parserYaml from "prettier/parser-yaml";
 import { StreamLanguage } from "@codemirror/stream-parser";
 import { yaml } from "@codemirror/legacy-modes/mode/yaml";
 import { useMemo } from "react";
-import { MetaFunction, LinksFunction } from "remix";
+import { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
 import usePrettier from "~/hooks/usePrettier";
