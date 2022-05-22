@@ -33,11 +33,11 @@
     "@uiw/react-codemirror": "^4.7.0",
     "graphql": "^16.5.0",
     "prettier": "^2.6.2",
+    "prettier-sql": "^5.1.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
-    "remix-utils": "^3.2.0",
-    "sql-formatter": "^6.1.1"
+    "remix-utils": "^3.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.5.1",

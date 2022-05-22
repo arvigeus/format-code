@@ -1,6 +1,6 @@
 import CodeMirror from "@uiw/react-codemirror";
-import { LanguageSupport } from "@codemirror/language";
-import { StreamLanguage } from "@codemirror/stream-parser";
+import type { LanguageSupport } from "@codemirror/language";
+import type { StreamLanguage } from "@codemirror/stream-parser";
 import { EditorView } from "@codemirror/view";
 
 import theme from "~/lib/editorTheme";
