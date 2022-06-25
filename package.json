@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "remix-app-template",
+  "name": "format-code",
   "description": "Easy and opinionated online code formatter",
   "license": "MIT",
   "scripts": {
