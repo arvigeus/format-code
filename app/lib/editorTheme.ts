@@ -1,6 +1,6 @@
 import { EditorView } from "@codemirror/view";
-import { Extension } from "@codemirror/state";
-import { HighlightStyle, tags as t } from "@codemirror/highlight";
+import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
+import { tags as t } from "@lezer/highlight";
 
 const editorViewTheme = EditorView.theme({
   "&": {
@@ -121,6 +121,6 @@ const highlightStyle = HighlightStyle.define([
   { tag: t.strikethrough, textDecoration: "line-through" },
 ]);
 
-const editorTheme: Extension = [editorViewTheme, highlightStyle];
+const editorTheme = [editorViewTheme, syntaxHighlighting(highlightStyle)];
 
 export default editorTheme;

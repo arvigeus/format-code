@@ -1,5 +1,5 @@
 import parserPostcss from "prettier/parser-postcss";
-import { StreamLanguage } from "@codemirror/stream-parser";
+import { StreamLanguage } from "@codemirror/language";
 import { sCSS } from "@codemirror/legacy-modes/mode/css";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
