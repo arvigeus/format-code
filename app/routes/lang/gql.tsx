@@ -1,5 +1,6 @@
 import parserGraphql from "prettier/parser-graphql";
-import { json } from "@codemirror/lang-json";
+import { StreamLanguage } from "@codemirror/language";
+import { graphql } from "codemirror-graphql/cm6-legacy/mode";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -17,7 +18,7 @@ export let links: LinksFunction = () => createLanguageManifest("gql");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => json(), []);
+  const language = useMemo(() => StreamLanguage.define(graphql), []);
   const isReady = usePrettier({
     parser: "graphql",
     plugins: [parserGraphql],
