@@ -19,8 +19,7 @@ export default function Code() {
   const language = useMemo(() => sql({ dialect: MariaSQL }), []);
   const isReady = useSqlFormatter({
     language: "mariadb",
-    uppercase: true,
-    linesBetweenQueries: 1,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

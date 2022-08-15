@@ -19,8 +19,7 @@ export default function Code() {
   const language = useMemo(() => sql({ dialect: MSSQL }), []);
   const isReady = useSqlFormatter({
     language: "tsql",
-    uppercase: true,
-    linesBetweenQueries: 1,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

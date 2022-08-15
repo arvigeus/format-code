@@ -19,8 +19,7 @@ export default function Code() {
   const language = useMemo(() => sql({ dialect: PostgreSQL }), []);
   const isReady = useSqlFormatter({
     language: "postgresql",
-    uppercase: true,
-    linesBetweenQueries: 1,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

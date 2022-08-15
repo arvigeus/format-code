@@ -19,8 +19,7 @@ export default function Code() {
   const language = useMemo(() => sql({ dialect: PLSQL }), []);
   const isReady = useSqlFormatter({
     language: "plsql",
-    uppercase: true,
-    linesBetweenQueries: 1,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

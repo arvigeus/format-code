@@ -18,8 +18,7 @@ export default function Code() {
   const { handleChange, code } = useFormatterOptions();
   const language = useMemo(() => sql(), []);
   const isReady = useSqlFormatter({
-    uppercase: true,
-    linesBetweenQueries: 1,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

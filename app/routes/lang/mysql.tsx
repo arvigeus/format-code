@@ -19,8 +19,7 @@ export default function Code() {
   const language = useMemo(() => sql({ dialect: MySQL }), []);
   const isReady = useSqlFormatter({
     language: "mysql",
-    uppercase: true,
-    linesBetweenQueries: 1,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;
