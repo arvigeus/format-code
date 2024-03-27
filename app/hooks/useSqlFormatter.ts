@@ -1,16 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
-import type { FormatOptions } from "sql-formatter";
-import { format } from "sql-formatter";
+import type { FormatOptionsWithDialect } from "sql-formatter";
+import { formatDialect } from "sql-formatter";
 import { useFormatterOptions } from "~/routes/lang";
 
-type SqlFormatOptions = Partial<FormatOptions>;
-
-export default function useSqlFormatter(options: SqlFormatOptions) {
+export default function useSqlFormatter(options: FormatOptionsWithDialect) {
   const [mounted, setMounted] = useState(false);
   const { setFormatter } = useFormatterOptions();
   const formatter = useCallback(
-    (code: string) => format(code, options),
-    [options]
+    (code: string) => Promise.resolve(formatDialect(code, options)),
+    [options],
   );
   useEffect(() => {
     setFormatter(formatter);

@@ -1,4 +1,4 @@
-import parserMarkdown from "prettier/parser-markdown";
+import pluginMarkdown from "prettier/plugins/markdown";
 import { markdown } from "@codemirror/lang-markdown";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
@@ -20,7 +20,7 @@ export default function Code() {
   const language = useMemo(() => markdown(), []);
   const isReady = usePrettier({
     parser: "markdown",
-    plugins: [parserMarkdown],
+    plugins: [pluginMarkdown],
   });
 
   if (!isReady) return null;

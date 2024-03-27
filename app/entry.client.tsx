@@ -8,7 +8,7 @@ requestIdleCallback(() =>
       document,
       <StrictMode>
         <RemixBrowser />
-      </StrictMode>
+      </StrictMode>,
     );
-  })
+  }),
 );

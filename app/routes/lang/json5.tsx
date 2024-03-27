@@ -1,4 +1,5 @@
-import parserBabel from "prettier/parser-babel";
+import pluginBabel from "prettier/plugins/babel";
+import pluginEstree from "prettier/plugins/estree";
 import { json } from "@codemirror/lang-json";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
@@ -20,7 +21,7 @@ export default function Code() {
   const language = useMemo(() => json(), []);
   const isReady = usePrettier({
     parser: "json5",
-    plugins: [parserBabel],
+    plugins: [pluginBabel, pluginEstree],
   });
 
   if (!isReady) return null;

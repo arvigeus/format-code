@@ -14,7 +14,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   if (theme) {
     const properties = Object.entries(theme).map(
-      ([property, color]) => `--color-${property}: ${color};`
+      ([property, color]) => `--color-${property}: ${color};`,
     );
 
     css = `:root {${properties.join("")}}`;

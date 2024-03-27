@@ -1,4 +1,5 @@
 import { sql } from "@codemirror/lang-sql";
+import { sql as sqlDialect } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -18,6 +19,7 @@ export default function Code() {
   const { handleChange, code } = useFormatterOptions();
   const language = useMemo(() => sql(), []);
   const isReady = useSqlFormatter({
+    dialect: sqlDialect,
     keywordCase: "upper",
   });
 

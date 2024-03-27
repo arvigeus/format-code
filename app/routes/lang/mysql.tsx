@@ -1,4 +1,5 @@
 import { sql, MySQL } from "@codemirror/lang-sql";
+import { mysql } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -18,7 +19,7 @@ export default function Code() {
   const { handleChange, code } = useFormatterOptions();
   const language = useMemo(() => sql({ dialect: MySQL }), []);
   const isReady = useSqlFormatter({
-    language: "mysql",
+    dialect: mysql,
     keywordCase: "upper",
   });
 

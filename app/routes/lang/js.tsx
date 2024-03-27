@@ -1,4 +1,5 @@
-import parserBabel from "prettier/parser-babel";
+import pluginBabel from "prettier/plugins/babel";
+import pluginEstree from "prettier/plugins/estree";
 import { javascript } from "@codemirror/lang-javascript";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
@@ -20,7 +21,7 @@ export default function Code() {
   const language = useMemo(() => javascript(), []);
   const isReady = usePrettier({
     parser: "babel",
-    plugins: [parserBabel],
+    plugins: [pluginBabel, pluginEstree],
   });
 
   if (!isReady) return null;

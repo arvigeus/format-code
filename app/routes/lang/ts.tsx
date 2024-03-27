@@ -1,4 +1,5 @@
-import parserTs from "prettier/parser-typescript";
+import pluginTypescript from "prettier/plugins/typescript";
+import pluginEstree from "prettier/plugins/estree";
 import { javascript } from "@codemirror/lang-javascript";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
@@ -20,7 +21,7 @@ export default function Code() {
   const language = useMemo(() => javascript({ typescript: true }), []);
   const isReady = usePrettier({
     parser: "typescript",
-    plugins: [parserTs],
+    plugins: [pluginTypescript, pluginEstree],
   });
 
   if (!isReady) return null;

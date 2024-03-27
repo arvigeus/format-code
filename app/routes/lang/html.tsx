@@ -1,4 +1,4 @@
-import parserHtml from "prettier/parser-html";
+import pluginHtml from "prettier/plugins/html";
 import { html } from "@codemirror/lang-html";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
@@ -20,7 +20,7 @@ export default function Code() {
   const language = useMemo(() => html(), []);
   const isReady = usePrettier({
     parser: "html",
-    plugins: [parserHtml],
+    plugins: [pluginHtml],
   });
 
   if (!isReady) return null;

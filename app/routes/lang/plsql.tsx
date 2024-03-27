@@ -1,4 +1,5 @@
 import { sql, PLSQL } from "@codemirror/lang-sql";
+import { plsql } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -18,7 +19,7 @@ export default function Code() {
   const { handleChange, code } = useFormatterOptions();
   const language = useMemo(() => sql({ dialect: PLSQL }), []);
   const isReady = useSqlFormatter({
-    language: "plsql",
+    dialect: plsql,
     keywordCase: "upper",
   });
 

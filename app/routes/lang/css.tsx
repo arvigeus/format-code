@@ -1,4 +1,4 @@
-import parserPostcss from "prettier/parser-postcss";
+import pluginPostcss from "prettier/plugins/postcss";
 import { css } from "@codemirror/lang-css";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
@@ -20,7 +20,7 @@ export default function Code() {
   const language = useMemo(() => css(), []);
   const isReady = usePrettier({
     parser: "css",
-    plugins: [parserPostcss],
+    plugins: [pluginPostcss],
   });
 
   if (!isReady) return null;

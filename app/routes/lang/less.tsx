@@ -1,4 +1,4 @@
-import parserPostcss from "prettier/parser-postcss";
+import pluginPostcss from "prettier/plugins/postcss";
 import { StreamLanguage } from "@codemirror/language";
 import { less } from "@codemirror/legacy-modes/mode/css";
 import { useMemo } from "react";
@@ -21,7 +21,7 @@ export default function Code() {
   const language = useMemo(() => StreamLanguage.define(less), []);
   const isReady = usePrettier({
     parser: "less",
-    plugins: [parserPostcss],
+    plugins: [pluginPostcss],
   });
 
   if (!isReady) return null;

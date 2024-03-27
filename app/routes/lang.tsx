@@ -15,7 +15,7 @@ export let links: LinksFunction = () => {
   ];
 };
 
-export type FormatterFunction = (text: string) => string;
+export type FormatterFunction = (text: string) => Promise<string>;
 
 export default function Format() {
   const [code, setCode] = useState("");
@@ -29,9 +29,9 @@ export default function Format() {
   const handleChange = useCallback((input: string) => {
     value.current = input;
   }, []);
-  const handleFormat = useCallback(() => {
+  const handleFormat = useCallback(async () => {
     if (!format.current || !value.current || value.current === code) return;
-    value.current = format.current(value.current);
+    value.current = await format.current(value.current);
     if (value.current !== code) setCode(value.current);
     else {
       // Edge case: Only formatting was changed (this would not trigger re-render)

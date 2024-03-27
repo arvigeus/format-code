@@ -1,4 +1,4 @@
-import parserYaml from "prettier/parser-yaml";
+import pluginYaml from "prettier/plugins/yaml";
 import { StreamLanguage } from "@codemirror/language";
 import { yaml } from "@codemirror/legacy-modes/mode/yaml";
 import { useMemo } from "react";
@@ -21,7 +21,7 @@ export default function Code() {
   const language = useMemo(() => StreamLanguage.define(yaml), []);
   const isReady = usePrettier({
     parser: "yaml",
-    plugins: [parserYaml],
+    plugins: [pluginYaml],
   });
 
   if (!isReady) return null;

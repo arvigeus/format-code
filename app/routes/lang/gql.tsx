@@ -1,4 +1,4 @@
-import parserGraphql from "prettier/parser-graphql";
+import pluginGraphql from "prettier/plugins/graphql";
 import { StreamLanguage } from "@codemirror/language";
 import { graphql } from "codemirror-graphql/cm6-legacy/mode";
 import { useMemo } from "react";
@@ -21,7 +21,7 @@ export default function Code() {
   const language = useMemo(() => StreamLanguage.define(graphql), []);
   const isReady = usePrettier({
     parser: "graphql",
-    plugins: [parserGraphql],
+    plugins: [pluginGraphql],
   });
 
   if (!isReady) return null;

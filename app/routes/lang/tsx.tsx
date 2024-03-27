@@ -1,7 +1,8 @@
-import parserBabel from "prettier/parser-babel";
+import pluginBabel from "prettier/plugins/babel";
+import pluginEstree from "prettier/plugins/estree";
 import { javascript } from "@codemirror/lang-javascript";
 import { useMemo } from "react";
-import { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
 import usePrettier from "~/hooks/usePrettier";
@@ -19,11 +20,11 @@ export default function Code() {
   const { handleChange, code } = useFormatterOptions();
   const language = useMemo(
     () => javascript({ jsx: true, typescript: true }),
-    []
+    [],
   );
   const isReady = usePrettier({
-    parser: "babel",
-    plugins: [parserBabel],
+    parser: "babel-ts",
+    plugins: [pluginBabel, pluginEstree],
   });
 
   if (!isReady) return null;
