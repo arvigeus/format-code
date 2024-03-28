@@ -1,26 +1,29 @@
-import { sql } from "@codemirror/lang-sql";
-import { sql as sqlDialect } from "sql-formatter";
+import pluginBabel from "prettier/plugins/babel";
+import pluginEstree from "prettier/plugins/estree";
+import { json } from "@codemirror/lang-json";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
-import useSqlFormatter from "~/hooks/useSqlFormatter";
+import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "SQL code formatter",
-  };
+  return [
+    {
+      title: "JSON code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("sql");
+export const links: LinksFunction = () => createLanguageManifest("json");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => sql(), []);
-  const isReady = useSqlFormatter({
-    dialect: sqlDialect,
-    keywordCase: "upper",
+  const language = useMemo(() => json(), []);
+  const isReady = usePrettier({
+    parser: "json",
+    plugins: [pluginBabel, pluginEstree],
   });
 
   if (!isReady) return null;

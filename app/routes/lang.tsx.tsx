@@ -1,6 +1,6 @@
 import pluginBabel from "prettier/plugins/babel";
 import pluginEstree from "prettier/plugins/estree";
-import { json } from "@codemirror/lang-json";
+import { javascript } from "@codemirror/lang-javascript";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -9,18 +9,23 @@ import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "JSON code formatter",
-  };
+  return [
+    {
+      title: "TSX code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("json");
+export const links: LinksFunction = () => createLanguageManifest("tsx");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => json(), []);
+  const language = useMemo(
+    () => javascript({ jsx: true, typescript: true }),
+    [],
+  );
   const isReady = usePrettier({
-    parser: "json",
+    parser: "babel-ts",
     plugins: [pluginBabel, pluginEstree],
   });
 

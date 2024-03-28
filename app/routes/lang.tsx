@@ -6,7 +6,7 @@ import { Outlet, useFetcher, useOutletContext } from "@remix-run/react";
 
 import Panel from "~/components/Panel";
 
-export let links: LinksFunction = () => {
+export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",

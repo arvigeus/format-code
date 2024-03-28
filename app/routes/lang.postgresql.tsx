@@ -1,27 +1,28 @@
-import pluginPostcss from "prettier/plugins/postcss";
-import { StreamLanguage } from "@codemirror/language";
-import { less } from "@codemirror/legacy-modes/mode/css";
+import { sql, PostgreSQL } from "@codemirror/lang-sql";
+import { postgresql } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
-import usePrettier from "~/hooks/usePrettier";
+import useSqlFormatter from "~/hooks/useSqlFormatter";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "LESS code formatter",
-  };
+  return [
+    {
+      title: "PostgreSQL code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("less");
+export const links: LinksFunction = () => createLanguageManifest("postgresql");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => StreamLanguage.define(less), []);
-  const isReady = usePrettier({
-    parser: "less",
-    plugins: [pluginPostcss],
+  const language = useMemo(() => sql({ dialect: PostgreSQL }), []);
+  const isReady = useSqlFormatter({
+    dialect: postgresql,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

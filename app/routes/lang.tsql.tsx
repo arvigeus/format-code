@@ -1,27 +1,28 @@
-import pluginGraphql from "prettier/plugins/graphql";
-import { StreamLanguage } from "@codemirror/language";
-import { graphql } from "codemirror-graphql/cm6-legacy/mode";
+import { sql, MSSQL } from "@codemirror/lang-sql";
+import { transactsql } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
-import usePrettier from "~/hooks/usePrettier";
+import useSqlFormatter from "~/hooks/useSqlFormatter";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "GraphQL code formatter",
-  };
+  return [
+    {
+      title: "TSQL code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("gql");
+export const links: LinksFunction = () => createLanguageManifest("tsql");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => StreamLanguage.define(graphql), []);
-  const isReady = usePrettier({
-    parser: "graphql",
-    plugins: [pluginGraphql],
+  const language = useMemo(() => sql({ dialect: MSSQL }), []);
+  const isReady = useSqlFormatter({
+    dialect: transactsql,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;

@@ -1,5 +1,6 @@
-import pluginHtml from "prettier/plugins/html";
-import { html } from "@codemirror/lang-html";
+import pluginBabel from "prettier/plugins/babel";
+import pluginEstree from "prettier/plugins/estree";
+import { javascript } from "@codemirror/lang-javascript";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -8,19 +9,21 @@ import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "HTML code formatter",
-  };
+  return [
+    {
+      title: "JavaScript code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("html");
+export const links: LinksFunction = () => createLanguageManifest("js");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => html(), []);
+  const language = useMemo(() => javascript(), []);
   const isReady = usePrettier({
-    parser: "html",
-    plugins: [pluginHtml],
+    parser: "babel",
+    plugins: [pluginBabel, pluginEstree],
   });
 
   if (!isReady) return null;

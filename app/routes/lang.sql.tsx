@@ -1,5 +1,5 @@
-import { sql, MSSQL } from "@codemirror/lang-sql";
-import { transactsql } from "sql-formatter";
+import { sql } from "@codemirror/lang-sql";
+import { sql as sqlDialect } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -8,18 +8,20 @@ import useSqlFormatter from "~/hooks/useSqlFormatter";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "TSQL code formatter",
-  };
+  return [
+    {
+      title: "SQL code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("tsql");
+export const links: LinksFunction = () => createLanguageManifest("sql");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => sql({ dialect: MSSQL }), []);
+  const language = useMemo(() => sql(), []);
   const isReady = useSqlFormatter({
-    dialect: transactsql,
+    dialect: sqlDialect,
     keywordCase: "upper",
   });
 

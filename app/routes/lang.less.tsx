@@ -1,26 +1,29 @@
-import { sql, MariaSQL } from "@codemirror/lang-sql";
-import { mariadb } from "sql-formatter";
+import pluginPostcss from "prettier/plugins/postcss";
+import { StreamLanguage } from "@codemirror/language";
+import { less } from "@codemirror/legacy-modes/mode/css";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
-import useSqlFormatter from "~/hooks/useSqlFormatter";
+import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "MariaDB code formatter",
-  };
+  return [
+    {
+      title: "LESS code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("mariadb");
+export const links: LinksFunction = () => createLanguageManifest("less");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => sql({ dialect: MariaSQL }), []);
-  const isReady = useSqlFormatter({
-    dialect: mariadb,
-    keywordCase: "upper",
+  const language = useMemo(() => StreamLanguage.define(less), []);
+  const isReady = usePrettier({
+    parser: "less",
+    plugins: [pluginPostcss],
   });
 
   if (!isReady) return null;

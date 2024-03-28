@@ -1,6 +1,5 @@
-import pluginPostcss from "prettier/plugins/postcss";
-import { StreamLanguage } from "@codemirror/language";
-import { sCSS } from "@codemirror/legacy-modes/mode/css";
+import pluginMarkdown from "prettier/plugins/markdown";
+import { markdown } from "@codemirror/lang-markdown";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -9,19 +8,21 @@ import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "SCSS code formatter",
-  };
+  return [
+    {
+      title: "MDX code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("sass");
+export const links: LinksFunction = () => createLanguageManifest("mdx");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => StreamLanguage.define(sCSS), []);
+  const language = useMemo(() => markdown(), []);
   const isReady = usePrettier({
-    parser: "scss",
-    plugins: [pluginPostcss],
+    parser: "mdx",
+    plugins: [pluginMarkdown],
   });
 
   if (!isReady) return null;

@@ -1,30 +1,28 @@
-import pluginBabel from "prettier/plugins/babel";
-import pluginEstree from "prettier/plugins/estree";
-import { javascript } from "@codemirror/lang-javascript";
+import pluginPostcss from "prettier/plugins/postcss";
+import { css } from "@codemirror/lang-css";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
-import { useFormatterOptions } from "~/routes/lang";
+import { useFormatterOptions } from "~/routes/lang.js";
 import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "TSX code formatter",
-  };
+  return [
+    {
+      title: "CSS code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("tsx");
+export const links: LinksFunction = () => createLanguageManifest("css");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(
-    () => javascript({ jsx: true, typescript: true }),
-    [],
-  );
+  const language = useMemo(() => css(), []);
   const isReady = usePrettier({
-    parser: "babel-ts",
-    plugins: [pluginBabel, pluginEstree],
+    parser: "css",
+    plugins: [pluginPostcss],
   });
 
   if (!isReady) return null;

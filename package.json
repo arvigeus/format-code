@@ -1,16 +1,20 @@
 {
-  "private": true,
   "name": "format-code",
   "description": "Easy and opinionated online code formatter",
   "license": "MIT",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "prebuild": "postcss app/styles --base app/styles --dir app/build/styles --env production",
-    "build": "remix build",
-    "dev:css": "postcss app/styles --base app/styles --dir app/build/styles -w",
-    "dev:remix": "remix dev",
-    "dev": "concurrently \"npm:dev:*\"",
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "start": "remix-serve ./build/server/index.js",
+    "typecheck": "tsc",
     "prepare": "husky"
   },
   "dependencies": {
@@ -26,15 +30,14 @@
     "@codemirror/view": "^6.26.0",
     "@lezer/highlight": "^1.2.0",
     "@prettier/plugin-xml": "^3.3.1",
-    "@remix-run/node": "^1.19.3",
-    "@remix-run/react": "^1.19.3",
-    "@remix-run/serve": "^1.19.3",
-    "@remix-run/vercel": "^1.19.3",
-    "@uiw/codemirror-theme-vscode": "^4.21.25",
+    "@remix-run/node": "^2.8.1",
+    "@remix-run/react": "^2.8.1",
+    "@remix-run/serve": "^2.8.1",
     "@uiw/codemirror-themes": "^4.21.25",
     "@uiw/react-codemirror": "^4.21.25",
     "codemirror-graphql": "^2.0.10",
     "graphql": "^16.8.1",
+    "isbot": "^4.1.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -43,33 +46,32 @@
     "sql-formatter": "^15.3.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.19.3",
-    "@remix-run/eslint-config": "^1.19.3",
+    "@remix-run/dev": "^2.8.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.30",
     "@types/prettier": "^3.0.0",
-    "@types/react": "^18.2.72",
-    "@types/react-dom": "^18.2.22",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.19",
-    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "eslint": "^8.57.0",
+    "eslint": "^8.38.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-remix": "^0.0.2",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.1.0",
-    "postcss-minify": "^1.1.0",
     "postcss-preset-env": "^9.5.2",
-    "typescript": "^5.4.3"
-  },
-  "engines": {
-    "node": ">=16"
+    "typescript": "^5.1.6",
+    "vite": "^5.1.0",
+    "vite-tsconfig-paths": "^4.2.1"
   },
   "husky": {
     "hooks": {
@@ -80,6 +82,5 @@
     "*.+(js|mjs|ts|tsx|css|md|yml)": [
       "prettier --write"
     ]
-  },
-  "sideEffects": false
+  }
 }

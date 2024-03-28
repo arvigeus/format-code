@@ -1,26 +1,28 @@
-import { sql, PostgreSQL } from "@codemirror/lang-sql";
-import { postgresql } from "sql-formatter";
+import pluginMarkdown from "prettier/plugins/markdown";
+import { markdown } from "@codemirror/lang-markdown";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
-import useSqlFormatter from "~/hooks/useSqlFormatter";
+import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "PostgreSQL code formatter",
-  };
+  return [
+    {
+      title: "Markdown code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("postgresql");
+export const links: LinksFunction = () => createLanguageManifest("md");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => sql({ dialect: PostgreSQL }), []);
-  const isReady = useSqlFormatter({
-    dialect: postgresql,
-    keywordCase: "upper",
+  const language = useMemo(() => markdown(), []);
+  const isReady = usePrettier({
+    parser: "markdown",
+    plugins: [pluginMarkdown],
   });
 
   if (!isReady) return null;

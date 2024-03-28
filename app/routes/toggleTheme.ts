@@ -7,7 +7,7 @@ import type { ThemeVariant } from "~/themes";
 import { editorColors, themeColors } from "~/themes";
 import { getSession, commitSession } from "~/session.server";
 
-export let action: ActionFunction = async ({ request }) => {
+export const action: ActionFunction = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
   const variant: ThemeVariant =
     session.get("theme") === "dark" ? "light" : "dark";

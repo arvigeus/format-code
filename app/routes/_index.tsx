@@ -9,12 +9,12 @@ import { createLanguageManifest } from "~/lib/meta";
 
 import { SimplePanel } from "~/components/Panel";
 
-import stylesUrl from "~/build/styles/home.css";
+import stylesUrl from "~/styles/home.css?url";
 
 type HomeData = Array<{ path: string; name: string }>;
 
-export let loader: LoaderFunction = ({ request }) => {
-  let data: HomeData = [
+export const loader: LoaderFunction = () => {
+  const data: HomeData = [
     { path: "/lang/css", name: "CSS" },
     { path: "/lang/gql", name: "GraphQL" },
     { path: "/lang/html", name: "HTML" },
@@ -43,14 +43,16 @@ export let loader: LoaderFunction = ({ request }) => {
 };
 
 // https://remix.run/api/conventions#meta
-export let meta: MetaFunction = () => {
-  return {
-    title: "Code formatter",
-    description: "Easy and opinionated online code formatter",
-  };
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: "Code formatter",
+      description: "Easy and opinionated online code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => {
+export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: stylesUrl },
     ...createLanguageManifest("code"),
@@ -58,7 +60,7 @@ export let links: LinksFunction = () => {
 };
 
 export default function Home() {
-  let data = useLoaderData<HomeData>();
+  const data = useLoaderData<HomeData>();
   const toggleTheme = useFetcher<Record<string, string>>();
 
   const reloadDocument = !!toggleTheme.data;

@@ -4,8 +4,8 @@ import type { ThemeVariant } from "~/themes";
 import { editorColors } from "~/themes";
 import { getSession } from "~/session.server";
 
-export let loader: LoaderFunction = async ({ request }) => {
-  let session = await getSession(request.headers.get("Cookie"));
+export const loader: LoaderFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
 
   const variant: ThemeVariant = session.get("theme") || "light";
   const theme = editorColors[variant];

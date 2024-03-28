@@ -1,6 +1,6 @@
-import pluginTypescript from "prettier/plugins/typescript";
-import pluginEstree from "prettier/plugins/estree";
-import { javascript } from "@codemirror/lang-javascript";
+import pluginPostcss from "prettier/plugins/postcss";
+import { StreamLanguage } from "@codemirror/language";
+import { sCSS } from "@codemirror/legacy-modes/mode/css";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -9,19 +9,21 @@ import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "TypeScript code formatter",
-  };
+  return [
+    {
+      title: "SCSS code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("ts");
+export const links: LinksFunction = () => createLanguageManifest("sass");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => javascript({ typescript: true }), []);
+  const language = useMemo(() => StreamLanguage.define(sCSS), []);
   const isReady = usePrettier({
-    parser: "typescript",
-    plugins: [pluginTypescript, pluginEstree],
+    parser: "scss",
+    plugins: [pluginPostcss],
   });
 
   if (!isReady) return null;

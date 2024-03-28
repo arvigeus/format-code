@@ -1,5 +1,5 @@
-import pluginMarkdown from "prettier/plugins/markdown";
-import { markdown } from "@codemirror/lang-markdown";
+import pluginHtml from "prettier/plugins/html";
+import { html } from "@codemirror/lang-html";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -8,19 +8,21 @@ import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "MDX code formatter",
-  };
+  return [
+    {
+      title: "HTML code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("mdx");
+export const links: LinksFunction = () => createLanguageManifest("html");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => markdown(), []);
+  const language = useMemo(() => html(), []);
   const isReady = usePrettier({
-    parser: "mdx",
-    plugins: [pluginMarkdown],
+    parser: "html",
+    plugins: [pluginHtml],
   });
 
   if (!isReady) return null;

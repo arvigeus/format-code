@@ -1,6 +1,6 @@
-import pluginBabel from "prettier/plugins/babel";
-import pluginEstree from "prettier/plugins/estree";
-import { javascript } from "@codemirror/lang-javascript";
+import pluginGraphql from "prettier/plugins/graphql";
+import { StreamLanguage } from "@codemirror/language";
+import { graphql } from "codemirror-graphql/cm6-legacy/mode";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -9,19 +9,21 @@ import usePrettier from "~/hooks/usePrettier";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "JavaScript code formatter",
-  };
+  return [
+    {
+      title: "GraphQL code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("js");
+export const links: LinksFunction = () => createLanguageManifest("gql");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => javascript(), []);
+  const language = useMemo(() => StreamLanguage.define(graphql), []);
   const isReady = usePrettier({
-    parser: "babel",
-    plugins: [pluginBabel, pluginEstree],
+    parser: "graphql",
+    plugins: [pluginGraphql],
   });
 
   if (!isReady) return null;

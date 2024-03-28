@@ -1,5 +1,5 @@
-import { sql, PLSQL } from "@codemirror/lang-sql";
-import { plsql } from "sql-formatter";
+import { sql, MariaSQL } from "@codemirror/lang-sql";
+import { mariadb } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
@@ -8,18 +8,20 @@ import useSqlFormatter from "~/hooks/useSqlFormatter";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "PL/SQL code formatter",
-  };
+  return [
+    {
+      title: "MariaDB code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("plsql");
+export const links: LinksFunction = () => createLanguageManifest("mariadb");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => sql({ dialect: PLSQL }), []);
+  const language = useMemo(() => sql({ dialect: MariaSQL }), []);
   const isReady = useSqlFormatter({
-    dialect: plsql,
+    dialect: mariadb,
     keywordCase: "upper",
   });
 

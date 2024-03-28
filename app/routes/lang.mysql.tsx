@@ -1,27 +1,28 @@
-import pluginBabel from "prettier/plugins/babel";
-import pluginEstree from "prettier/plugins/estree";
-import { json } from "@codemirror/lang-json";
+import { sql, MySQL } from "@codemirror/lang-sql";
+import { mysql } from "sql-formatter";
 import { useMemo } from "react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import CodeEditor from "~/components/CodeEditor.client";
 import { useFormatterOptions } from "~/routes/lang";
-import usePrettier from "~/hooks/usePrettier";
+import useSqlFormatter from "~/hooks/useSqlFormatter";
 import { createLanguageManifest } from "~/lib/meta";
 
 export const meta: MetaFunction = () => {
-  return {
-    title: "JSON5 code formatter",
-  };
+  return [
+    {
+      title: "MySQL code formatter",
+    },
+  ];
 };
 
-export let links: LinksFunction = () => createLanguageManifest("json5");
+export const links: LinksFunction = () => createLanguageManifest("mysql");
 
 export default function Code() {
   const { handleChange, code } = useFormatterOptions();
-  const language = useMemo(() => json(), []);
-  const isReady = usePrettier({
-    parser: "json5",
-    plugins: [pluginBabel, pluginEstree],
+  const language = useMemo(() => sql({ dialect: MySQL }), []);
+  const isReady = useSqlFormatter({
+    dialect: mysql,
+    keywordCase: "upper",
   });
 
   if (!isReady) return null;
