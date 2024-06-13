@@ -1,3 +1,5 @@
+// .eslintrc.cjs
+
 /**
  * This is intended to be a basic starting point for linting in your app.
  * It relies on recommended configs out of the box for simplicity, but you can
@@ -35,6 +37,9 @@ module.exports = {
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
       ],
+      rules: {
+        "jsx-a11y/no-autofocus": "off",
+      },
       settings: {
         react: {
           version: "detect",
