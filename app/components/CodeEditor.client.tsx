@@ -29,7 +29,7 @@ export default function CodeEditor({
 
 export const customExtensions: Extension = EditorView.theme({
   // Disable selecting line numbers
-  ".cm-lineNumbers": {
+  ".cm-gutters": {
     userSelect: "none",
   },
 });
