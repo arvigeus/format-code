@@ -3,7 +3,6 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
 import { createLanguageManifest } from "~/lib/meta";
 
@@ -38,8 +37,7 @@ export const loader: LoaderFunction = () => {
     { path: "/lang/yaml", name: "YAML" },
   ];
 
-  // https://remix.run/api/remix#json
-  return json(data);
+  return data;
 };
 
 // https://remix.run/api/conventions#meta
@@ -52,12 +50,10 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: stylesUrl },
-    ...createLanguageManifest("code"),
-  ];
-};
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesUrl },
+  ...createLanguageManifest("code"),
+];
 
 export default function Home() {
   const data = useLoaderData<HomeData>();

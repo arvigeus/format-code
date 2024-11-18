@@ -1,7 +1,7 @@
 // https://www.ebey.me/blog/dynamic-css-with-remix-resource-routes
 import type { ActionFunction } from "@remix-run/node";
 
-import { json } from "@remix-run/node";
+import { data } from "@remix-run/node";
 
 import type { ThemeVariant } from "~/themes";
 import { editorColors, themeColors } from "~/themes";
@@ -33,7 +33,7 @@ export const action: ActionFunction = async ({ request }) => {
   css["backgroundColor"] = "var(--color-background)";
   css["color"] = "var(--color-foreground)";
 
-  return json(css, {
+  return data(css, {
     headers: {
       "Set-Cookie": await commitSession(session),
     },

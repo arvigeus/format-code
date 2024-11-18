@@ -10,16 +10,14 @@ import globalStylesUrl from "~/styles/global.css?url";
 import panelStylesUrl from "~/styles/panel.css?url";
 
 // https://remix.run/api/app#links
-export const links = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: "/styles/theme.css",
-    },
-    { rel: "stylesheet", href: globalStylesUrl },
-    { rel: "stylesheet", href: panelStylesUrl },
-  ];
-};
+export const links = () => [
+  {
+    rel: "stylesheet",
+    href: "/styles/theme.css",
+  },
+  { rel: "stylesheet", href: globalStylesUrl },
+  { rel: "stylesheet", href: panelStylesUrl },
+];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
